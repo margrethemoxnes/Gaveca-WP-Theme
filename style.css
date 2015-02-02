@@ -1,0 +1,13 @@
+/*
+Theme Name: Gaveca
+Theme URI: http://moxnesdesign.no/portfolio/gaveca/
+Author: Margrethe Moxnes
+Author URI: http://www.moxnesdesign.no/
+Description: Webside for Forlag Gaveca.
+Version: 1.0
+*/
+
+@import url('assets/css/normalize.css');
+@import url('assets/css/bootstrap-theme.min.css');
+@import url('assets/css/bootstrap.min.css');
+@import url('assets/css/gaveca.css');
