@@ -179,6 +179,28 @@ footer h4 {
     -o-background-size: contain;
     background-size: contain;
     margin-left: auto;
+    height: 400px;
+    padding-bottom: 0;
+  }
+  #front #bestill.btn {
+    bottom: -8em;
+    margin-left: 2.5em;
+  }
+  #front-bestselger {
+    font-size: 2.3em;
+    top: 2.5em;
+    margin-left: 3.9em;
+  }
+  #front-tittel {
+    font-size: 2.5em;
+    margin-left: 1em;
+    top: 2.5em;
+    width: 8em;
+  }
+  #front-forfatter {
+    font-size: 2.5em;
+    top: 2.5em;
+    margin-left: 1em;
   }
   /*************/
   nav {
@@ -187,10 +209,59 @@ footer h4 {
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  
+  /* Bestselger */
+  #front .container {
+    height: 500px;
+  }
+  #front #bestill.btn {
+    bottom: -10em;
+    margin-left: 3em;
+  }
+  #front-bestselger {
+    font-size: 2.8em;
+    top: 2.5em;
+    margin-left: 3.9em;
+  }
+  #front-tittel {
+    font-size: 3em;
+    margin-left: 1em;
+    top: 2.5em;
+    width: 8em;
+  }
+  #front-forfatter {
+    font-size: 3em;
+    top: 2.5em;
+    margin-left: 1em;
+  }
+  /*************/
 }
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  #front .container {
+    height: 650px;
+  }
+  #front #bestill.btn {
+    bottom: -11em;
+    margin-left: 3.5em;
+  }
+  #front-bestselger {
+    font-size: 3.3em;
+    top: 2.5em;
+    margin-left: 3.9em;
+  }
+  #front-tittel {
+    font-size: 3.5em;
+    margin-left: 1em;
+    top: 2.5em;
+    width: 8em;
+  }
+  #front-forfatter {
+    font-size: 3.5em;
+    top: 2.5em;
+    margin-left: 1em;
+  }
+  /* Bestselger */
+  /*************/
   /*
   
   
