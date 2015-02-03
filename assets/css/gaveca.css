@@ -24,11 +24,24 @@
 .btn.btn-danger {
   background-color: #ef3e56;
 }
+.pages {
+  padding: 1em 0;
+  font-size: 1.3em;
+}
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #000;
 }
-/* Meny */
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1em;
+}
+.content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+/* Nav */
 #logo {
   position: absolute;
   top: 0px;
@@ -76,11 +89,17 @@ body {
   float: none;
   padding: 0.1em 0;
   font-size: 1.5em;
+  text-transform: uppercase;
 }
 .nav-pills > li a {
   color: #fff;
 }
 .nav-pills > li a:hover {
+  background-color: #b80f26;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
   background-color: #b80f26;
 }
 /* Search  */
@@ -105,6 +124,45 @@ body {
   padding-bottom: 100%;
   margin-left: 2em;
   margin-top: 2em;
+  -webkit-animation: fadein 2s;
+  /* Safari and Chrome */
+
+  -moz-animation: fadein 2s;
+  /* Firefox */
+
+  -ms-animation: fadein 2s;
+  /* Internet Explorer */
+
+  -o-animation: fadein 2s;
+  /* Opera */
+
+  animation: fadein 2s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Firefox */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 #front-bestselger {
   font-size: 1.5em;
@@ -132,12 +190,74 @@ body {
   bottom: -20em;
 }
 /****************/
+/* Bøker */
+#boker {
+  background-color: #e7e7e7;
+}
+/*********/
+/* Forfattere */
+#forfattere {
+  background-color: #525252;
+}
+/*********/
+/* Bestille Bøker */
+#bestille-boker {
+  background-color: #222222;
+  color: #efefef;
+}
+#bestille-boker .txtBestill {
+  line-height: 2.5em;
+  font-size: 1em;
+  font-weight: 300;
+  letter-spacing: 1px;
+  padding-right: 4em;
+}
+#bestille-boker input,
+textarea {
+  width: 450px;
+  font-size: 0.8em;
+  letter-spacing: 0.5px;
+  margin: 0.25em 0;
+}
+#bestille-boker input[name=your-postnr] {
+  width: 140px;
+  margin-bottom: 0.7em;
+  margin-right: 0.5em;
+}
+#bestille-boker input[name=your-poststed] {
+  width: 297px;
+}
+#bestille-boker input[type=submit] {
+  background: none;
+  border: none;
+  width: 60px;
+}
+#bestille-boker .btn {
+  position: relative;
+  left: 365px;
+}
+#bestille-boker .col-xs-12 {
+  padding-bottom: 1em;
+}
+/*********/
+/* Kontakt Oss */
+#kontakt {
+  background-color: #e3e3e3;
+}
+.google-maps iframe {
+  margin-left: 0px;
+  width: 100%;
+  border-top: solid thick #525252 !important;
+  border-bottom: solid thick #525252 !important;
+  margin-right: 0px;
+  margin-bottom: -0.5em;
+}
+/********/
 /*   Footer   */
 footer {
   border-top: solid 0.2em #666;
   background-color: #808080;
-  margin-top: 1em;
-  padding: 1em 0;
+  padding-bottom: 1em;
   color: #f7f7f7;
 }
 footer a {
@@ -203,12 +323,62 @@ footer h4 {
     margin-left: 1em;
   }
   /*************/
-  nav {
-    display: none;
+  /*     Nav    */
+  #backMenu {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-bottom: 1em;
+    position: fixed;
+    z-index: 9999;
   }
+  .nav-pills > li {
+    display: inline-block;
+    font-size: 0.65em;
+  }
+  .nav-pills > li a {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+  }
+  .nav-pills > li:not(.active) a {
+    border-bottom: solid 0.1em rgba(255, 255, 255, 0);
+    -webkit-transition: border-bottom-color 0.5s;
+    -moz-transition: border-bottom 0.5s;
+    -o-transition: border-bottom 0.5s;
+    transition: border-bottom 0.5s;
+  }
+  .nav.nav-pills {
+    text-align: right;
+  }
+  .nav-pills > li.active > a:hover,
+  .nav-pills > li.active > a:focus,
+  .nav-pills > li a:hover {
+    background-color: transparent;
+    border-bottom: solid thin #fff;
+  }
+  .nav-pills > li.active a {
+    background-color: transparent;
+    border-bottom: solid thin #fff;
+  }
+  .menu-row {
+    position: fixed;
+  }
+  #logo {
+    position: fixed;
+  }
+  /***************/
+  /* Bestille Bøker */
+  /******************/
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  /*     Nav    */
+  .nav-pills > li {
+    display: inline-block;
+    font-size: 1em;
+    margin-top: -0.3em;
+  }
+  /***************/
   /* Bestselger */
   #front .container {
     height: 500px;
@@ -237,6 +407,13 @@ footer h4 {
 }
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+  /*     Nav    */
+  .nav-pills > li {
+    display: inline-block;
+    font-size: 1.1em;
+    margin-top: -0.3em;
+    padding: 0 1em;
+  }
   #front .container {
     height: 650px;
   }
