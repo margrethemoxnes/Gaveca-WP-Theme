@@ -14,10 +14,11 @@ get_header(); ?>
                 <div class="container-fluid pages page-<?php echo $post->ID ?>" id="<?php echo $post->post_name ?>">	
                 	<div class="container">
 					<h2 class="<?php echo $post->post_name ?>"><?php the_title(); ?></h2>
+                    </div>
                     	<div class="content">
                     		<?php the_content(); ?>
                     	</div>
-                    </div>
+
                  </div>
 				<?php endwhile; ?>
 			<!-- end of the loop -->

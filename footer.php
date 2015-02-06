@@ -1,6 +1,7 @@
         </div>
         <!-- Kart -->
         <div class="google-maps">
+        	<div class="overlay" onClick="style.pointerEvents='none'"></div>
         	<iframe scrolling="no" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2085.2987826636727!2d8.760046599999999!3d58.48948240000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4647945e885d7b9d%3A0xe52c96fbf4bfd376!2sTeknologiveien+1%2C+4846+Arendal!5e0!3m2!1sen!2sno!4v1422969161824" width="100%" height="300px" frameborder="0" style="border:0"></iframe>
         </div>
         <footer>

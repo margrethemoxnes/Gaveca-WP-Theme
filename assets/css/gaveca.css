@@ -82,7 +82,7 @@ h2 {
 .nav.nav-pills {
   width: 100%;
   margin: 0 auto;
-  background-color: #ef3e56;
+  background-color: #ef3e56 !important;
   opacity: 0.95;
 }
 .nav-pills > li {
@@ -189,21 +189,71 @@ h2 {
   position: relative;
   bottom: -20em;
 }
+#front #bestill.btn a {
+  color: #fff;
+}
 /****************/
 /* Bøker */
+#boker h2 {
+  font-size: 2.5em;
+}
 #boker {
   background-color: #e7e7e7;
+  color: #333;
 }
 /*********/
+/* Mentor */
+#mentor {
+  background-color: #000;
+  color: #fff;
+  font-size: 1.8em;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.8em;
+  margin-bottom: -1.5em;
+}
+#mentor h2 {
+  display: none;
+}
+/**********/
 /* Forfattere */
 #forfattere {
   background-color: #525252;
+  color: #fff;
+}
+#forfattere h2 {
+  font-size: 2.5em;
+}
+.forfatterMagen {
+  background-color: #ef3e56;
 }
 /*********/
+/* Forfatter i magen */
+#gar-du-med-en-forfatter-i-magen {
+  background-color: #ef3e56;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 2em;
+}
+#gar-du-med-en-forfatter-i-magen h2 {
+  font-size: 2.5em;
+}
+#gar-du-med-en-forfatter-i-magen a {
+  color: #fff;
+  text-decoration: underline;
+}
+#gar-du-med-en-forfatter-i-magen .content {
+  letter-spacing: 0.5px;
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
 /* Bestille Bøker */
 #bestille-boker {
   background-color: #222222;
   color: #efefef;
+}
+#bestille-boker h2 {
+  font-size: 2.5em;
 }
 #bestille-boker .txtBestill {
   line-height: 2.5em;
@@ -214,35 +264,55 @@ h2 {
 }
 #bestille-boker input,
 textarea {
-  width: 450px;
+  width: 400px;
   font-size: 0.8em;
   letter-spacing: 0.5px;
   margin: 0.25em 0;
 }
+#bestille-boker input:not([type=submit]) {
+  height: 2.5em;
+}
 #bestille-boker input[name=your-postnr] {
-  width: 140px;
+  width: 120px;
   margin-bottom: 0.7em;
   margin-right: 0.5em;
 }
 #bestille-boker input[name=your-poststed] {
-  width: 297px;
+  width: 270px;
 }
 #bestille-boker input[type=submit] {
   background: none;
   border: none;
   width: 60px;
+  letter-spacing: 1px;
 }
 #bestille-boker .btn {
   position: relative;
-  left: 365px;
-}
-#bestille-boker .col-xs-12 {
-  padding-bottom: 1em;
+  left: 320px;
+  font-size: 1.1em;
 }
 /*********/
 /* Kontakt Oss */
 #kontakt {
   background-color: #e3e3e3;
+  color: #666;
+}
+#kontakt h2 {
+  font-size: 2.5em;
+}
+.google-maps .overlay {
+  background: transparent;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  /* your iframe height */
+
+  top: 300px;
+  /* your iframe height */
+
+  margin-top: -300px;
+  /* your iframe height */
+
 }
 .google-maps iframe {
   margin-left: 0px;
@@ -251,6 +321,23 @@ textarea {
   border-bottom: solid thick #525252 !important;
   margin-right: 0px;
   margin-bottom: -0.5em;
+}
+#kontakt h3 {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+#kontakt a {
+  color: #666;
+}
+#kontakt p.pgaveca {
+  font-weight: bold;
+}
+#kontakt .ansatte .vc_col-sm-6 h4 {
+  margin-bottom: 0.3em;
+}
+#kontakt .jT {
+  font-weight: 200;
+  letter-spacing: 1px;
 }
 /********/
 /*   Footer   */
@@ -405,6 +492,31 @@ footer h4 {
     margin-left: 1em;
   }
   /*************/
+  /* Kontakt */
+  #kontakt .adresser {
+    border-right: solid thin #333;
+  }
+  #kontakt .ansatte {
+    padding-left: 3em;
+  }
+  /************/
+  /* Visual Composer 
+  
+  .vc_column_container{
+  	display: inline-block;
+  	vertical-align:top;
+  }
+  .vc_col-sm-4{
+  	width: 33%;
+  }
+  
+  .vc_col-sm-8{
+  	width: 66%;
+  }
+  
+  .vc_col-sm-6{
+  	width: 49%;
+  }*/
 }
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {

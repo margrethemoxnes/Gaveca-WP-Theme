@@ -28,7 +28,7 @@
 				<div id="front-bestselger" >Vår bestselger</div>
 				<div id="front-tittel" >En liten stemme fra Sørlandet</div>
 				<div id="front-forfatter" >Janne Mojlanen</div>
-				<button id="bestill" class="btn btn-danger">Bestill her <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+				<button id="bestill" class="btn btn-danger"><a href="#bestille-boker">Bestill her <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></button>
 			</div>
 		</div>
 
