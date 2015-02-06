@@ -13,7 +13,7 @@ get_header(); ?>
 				<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                 <div class="container-fluid pages page-<?php echo $post->ID ?>" id="<?php echo $post->post_name ?>">	
                 	<div class="container">
-					<h2><?php the_title(); ?></h2>
+					<h2 class="<?php echo $post->post_name ?>"><?php the_title(); ?></h2>
                     	<div class="content">
                     		<?php the_content(); ?>
                     	</div>
