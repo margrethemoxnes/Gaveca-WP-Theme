@@ -56,5 +56,11 @@ jQuery(document).ready(function() {
 		}
 	});
 	
+	/* MixUp */
+	jQuery(function(){
+	$('#boker .Container').mixItUp();
+	});
+	
+	
 });
 

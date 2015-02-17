@@ -10,10 +10,9 @@
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/modernizr.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.mixitup.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/script.js"></script>
     <link rel="icon" type="image/ico" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico"/>
 </head>
-<body  <?php if(is_front_page()){echo 'class="home"';}  ?>>
+<body>
 <!-- Facebook -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -23,13 +22,4 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=319418674890445&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<?php include('menu.php'); ?>
-		<div id="front">
-			<div class="container">
-				<div id="front-bestselger" >Vår bestselger</div>
-				<div id="front-tittel" >En liten stemme fra Sørlandet</div>
-				<div id="front-forfatter" >Janne Mojlanen</div>
-				<button id="bestill" class="btn btn-danger"><a href="#bestille-boker">Bestill her <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></button>
-			</div>
-		</div>
-
+<?php include('menu-second.php'); ?>

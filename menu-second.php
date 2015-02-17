@@ -18,7 +18,7 @@
                             <span class="icon-bar"></span>
 						</button>
 					</div>
-					<?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'menu_class' => 'nav nav-pills ', 
+					<?php wp_nav_menu( array( 'theme_location' => 'top-menu', 'menu_class' => 'nav nav-pills ', 
 					'container_class' => 'collapse navbar-collapse', 'container_id' => 'bs-example-navbar-collapse-1' ) ); ?>
 				</div><!-- /.container-fluid -->
 			</nav>	

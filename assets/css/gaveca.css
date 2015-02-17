@@ -21,8 +21,22 @@
 }
 /****************************/
 /* Common */
+a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+a:active,
+a:visited {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
 .btn.btn-danger {
   background-color: #ef3e56;
+  color: #fff;
 }
 .pages {
   padding: 1em 0;
@@ -193,6 +207,21 @@ h2 {
   color: #fff;
 }
 /****************/
+/* 404 */
+#notfound {
+  background-color: #fff;
+  color: #666;
+  padding: 15em 0;
+}
+#notfound p {
+  line-height: 2.5em;
+  font-size: 1.5em;
+}
+#notfound a {
+  text-decoration: underline;
+  color: #666;
+}
+/*******/
 /* Bøker */
 #boker h2 {
   font-size: 2.5em;
@@ -200,6 +229,20 @@ h2 {
 #boker {
   background-color: #e7e7e7;
   color: #333;
+}
+#boker .forfattere {
+  display: inline-block;
+}
+#boker .publikasjoner {
+  padding-bottom: 2em;
+  position: relative;
+  height: 248px;
+  left: 0%;
+}
+#boker .publikasjoner img {
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 2em;
 }
 /*********/
 /* Mentor */
@@ -226,6 +269,32 @@ h2 {
 }
 .forfatterMagen {
   background-color: #ef3e56;
+}
+.colAuthor h4 {
+  font-size: 0.9em;
+  color: #efefef;
+  line-height: 1.5em;
+  font-weight: 400;
+  letter-spacing: 1px;
+  width: 166px;
+  text-align: center;
+}
+.colAuthor p {
+  font-size: 0.8em;
+  width: 166px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  line-height: 1.5em;
+}
+.colAuthor .btn-sm {
+  position: relative;
+  margin-left: 20%;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+#forfattere .colAuthors a {
+  text-decoration: none;
+  color: #fff !important;
 }
 /*********/
 /* Forfatter i magen */
@@ -359,10 +428,12 @@ footer h4 {
 }
 /*  Kolonner i Footer  */
 .footerCol {
-  margin-left: -3.45em;
   list-style: none;
   font-size: 0.8em;
   text-transform: uppercase;
+}
+ul.footerCol {
+  margin-left: -3.45em;
 }
 /*  Facebook  */
 .fb_iframe_widget {
@@ -376,6 +447,65 @@ footer h4 {
   font-weight: 100;
   font-size: 0.8em;
 }
+/*	Forfatter & Bok - Single */
+#theContent {
+  padding-top: 10em;
+  background-color: #fff;
+  color: #666;
+}
+.contentInfo {
+  margin-bottom: 2em;
+}
+.contentDesc {
+  font-size: 1.3em;
+  letter-spacing: 0.5px;
+  line-height: 1.8em;
+  margin: 1em 0;
+  font-weight: 300;
+}
+/* Forfatter - Single */
+#theAuthor h3 {
+  margin-bottom: 0.6em;
+}
+.authorBooks {
+  margin-bottom: 2em;
+}
+/**********************/
+/* Bok - Single */
+.shoppingCart {
+  text-align: right;
+}
+#theContent .btn-danger {
+  width: 100%;
+  height: 3.5em;
+}
+#theContent .attachment-post-thumbnail {
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+/* More Books */
+.moreBooks {
+  text-align: center;
+}
+.moreBook {
+  margin-bottom: 2em;
+}
+.moreBooksTitle {
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-weight: 300;
+  margin-bottom: 2em;
+}
+.moreBookTitle {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 300;
+  margin-top: 0.5em;
+  letter-spacing: 0.5px;
+}
+/**************/
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   /* Bestselger */
@@ -500,23 +630,44 @@ footer h4 {
     padding-left: 3em;
   }
   /************/
-  /* Visual Composer 
-  
-  .vc_column_container{
-  	display: inline-block;
-  	vertical-align:top;
+  /* Bøker */
+  #boker {
+    min-height: 850px;
   }
-  .vc_col-sm-4{
-  	width: 33%;
+  #boker .Container .mix {
+    display: none;
   }
-  
-  .vc_col-sm-8{
-  	width: 66%;
+  #boker button.filter {
+    background: none;
+    border: none;
   }
-  
-  .vc_col-sm-6{
-  	width: 49%;
-  }*/
+  #boker .filter {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    font-weight: 200;
+    color: #666;
+    text-transform: uppercase;
+    padding: 0.4em 1em;
+  }
+  #boker button.filter:hover {
+    text-decoration: underline;
+  }
+  #boker .buttons {
+    text-align: center;
+    padding-bottom: 2em;
+  }
+  /* Bok - Single */
+  #theContent .btn-danger {
+    width: 106px;
+    height: 34px;
+    margin-top: 2em;
+  }
+  #theContent .attachment-post-thumbnail {
+    text-align: left;
+    width: auto;
+    margin: 0 ;
+  }
+  /*****************/
 }
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
