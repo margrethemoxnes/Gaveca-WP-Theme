@@ -2,7 +2,7 @@
 	<div id="backMenu"></div>
 	<div class="container">
 		<a href="<?php echo home_url(); ?>">
-        	<img id="logo" class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/assets/images/gaveca-logo_200x64.png">
+        	<img id="logo" alt="Gaveca-Logo" class="img-responsive" src="<?php echo get_template_directory_uri(); ?>/assets/images/gaveca-logo.jpg">
 		</a>
 	</div>
 	<div class="row menu-row">
@@ -22,11 +22,6 @@
 					'container_class' => 'collapse navbar-collapse', 'container_id' => 'bs-example-navbar-collapse-1' ) ); ?>
 				</div><!-- /.container-fluid -->
 			</nav>	
-		</div>
-	</div>
-	<div class="container">
-		<div id="search" class="input-group">
-			<input type="text" class="form-control" placeholder="Skriv og trykk enter" aria-describedby="basic-addon1">
 		</div>
 	</div>
 </header>

@@ -1,4 +1,4 @@
-<?php include('header3.php'); ?>
+<?php include('header2.php'); ?>
 <div class="container-fluid" id="theContent">
 	<div class="container">
     <?php if (have_posts()) : while (have_posts()) : the_post();
@@ -20,7 +20,7 @@
 							} ?>
                         </div>
                 		<div class="col-xs-12 col-md-10 shoppingCart">
-                        	<button class="btn btn-danger"><a href="mailto:post@gaveca.no?subject=Bestilling: <?php the_title(); ?>">Kjøp <span class="glyphicon glyphicon-shopping-cart"></span></a></button>
+                        	<a href="mailto:post@gaveca.no?subject=Bestilling: <?php the_title(); ?>&amp;body=Vennligst skriv inn ditt navn, adresse, telefonnummer, og hvilket produkt du ønsker. Husk å gi oss beskjed dersom du bestiller som bokhandler." class="btn btn-danger">Kjøp <span class="glyphicon glyphicon-shopping-cart"></span></a>
                         </div>
                 	</div>
                 </div>

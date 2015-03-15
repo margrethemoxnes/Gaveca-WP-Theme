@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo wp_title(). ' | ' .get_bloginfo('name'); ?></title>
 	<link href="<?php echo get_stylesheet_uri(); ?>" type="text/css" rel="stylesheet">
+    <?php do_action('wp_head'); ?>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-1.11.2.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/modernizr.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.mixitup.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/script.js"></script>
-    <link rel="icon" type="image/ico" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico"/>
+    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/script.min.js"></script>
+    <link rel="icon" type="image/ico" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico"/>
 </head>
 <body  <?php if(is_front_page()){echo 'class="home"';}  ?>>
 <!-- Facebook -->
@@ -29,7 +30,7 @@
 				<div id="front-bestselger" >Vår bestselger</div>
 				<div id="front-tittel" >En liten stemme fra Sørlandet</div>
 				<div id="front-forfatter" >Janne Mojlanen</div>
-				<button id="bestill" class="btn btn-danger"><a href="#bestille-boker">Bestill her <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></button>
+				<a href="#bestille-boker" id="bestill" class="btn btn-danger">Bestill her <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
 			</div>
 		</div>
 

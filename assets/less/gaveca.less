@@ -1,23 +1,20 @@
-	/* Mixins */
+/*	Variables	*/
 @gaveca: #ef3e56;
 @font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@tittelMobile: 1.5em;
 @tittel: 2.5em;
-.border-radius{
-	border-radius: 10px 10px 10px 10px;
--moz-border-radius: 10px 10px 10px 10px;
--webkit-border-radius: 10px 10px 10px 10px;
-}
 
-.background-gradient-hover{
-	background: -webkit-linear-gradient(darken(hsl(352,85%,59%), 10%), darken(hsl(352,85%,59%), 20%) ); /* For Safari 5.1 to 6.0 */
-	background: -o-linear-gradient(darken(hsl(352,85%,59%), 10%), darken(hsl(352,85%,59%), 20%) ); /* For Opera 11.1 to 12.0 */
-	background: -moz-linear-gradient(darken(hsl(352,85%,59%), 10%), darken(hsl(352,85%,59%), 20%) ); /* For Firefox 3.6 to 15 */
-	background: linear-gradient(darken(hsl(352,85%,59%), 10%), darken(hsl(352,85%,59%), 20%)); /* Standard syntax */
+/*	Mixins	*/
+.animate-2s{
+	 -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -moz-animation: fadein 2s; /* Firefox */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+     -o-animation: fadein 2s; /* Opera */
+    animation: fadein 2s;
 }
-
 /****************************/
 
-/* Common */
+/* Mobile First */
 
 a {
 	color:#fff !important;
@@ -41,7 +38,7 @@ a:hover{
 
 .pages{
 	padding: 1em 0;
-	font-size:1.3em;
+	font-size:1em;
 }
 
 body{
@@ -58,14 +55,24 @@ h2 {
 .content{
 	max-width:960px;
 	margin: 0 auto;
+	width: 90%;
 }
 
 /* Nav */
 #logo{
 	position: absolute;
 	top:0px;
-	margin-top:10px;
+	margin-top:1.65em;
 	z-index:9999;
+	position: fixed;
+}
+
+#backMenu{
+	width: 100%;
+	background-color: rgba(0,0,0,0.8);
+	padding-bottom: 2em;
+	position: fixed;
+	z-index: 9998 !important;
 }
 
 .navbar-default {
@@ -90,14 +97,13 @@ h2 {
 
 .menu-row{
 	background-color: @gaveca;
-	margin-top:1em;
-	padding:0.5em 0;
+	margin-top:2em;
 	top:0;
-	position:absolute;
+	position:fixed;
 	width:100%;
+	margin-left:0 !important;
+	margin-right:0 !important;
 	z-index: 9998;
-	margin-left: 0px !important;
-	margin-right:0px !important;
 	height: 55px;
 }
 
@@ -128,22 +134,10 @@ h2 {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-background-color: darken(@gaveca, 20%);
+	background-color: darken(@gaveca, 20%);
 }
 
-/* Search  */
-	
-	#search.input-group{
-		position: fixed;
-		z-index: 9999;
-		right: 100px;
-		width: 400px;
-		top: 80px;
-		display:none;
-	}
-
 /* Bestselger */
-
 
 #front .container{
 	background-image: url(../images/frontMobil.jpg);
@@ -157,40 +151,32 @@ background-color: darken(@gaveca, 20%);
 	padding-bottom:100%;
 	margin-left:2em;
 	margin-top:2em;
-	 -webkit-animation: fadein 2s; /* Safari and Chrome */
-    -moz-animation: fadein 2s; /* Firefox */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-     -o-animation: fadein 2s; /* Opera */
-    animation: fadein 2s;
+	.animate-2s();
 }
 
- 		@keyframes fadein {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+@keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
 
-        /* Firefox */
-        @-moz-keyframes fadein {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+/* Firefox */
+@-moz-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
 
-        /* Safari and Chrome */
-        @-webkit-keyframes fadein {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
-
-
-        
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
 
 #front-bestselger{
 	font-size:1.5em;
 	color: #fff;
 	position:relative;
 	top:3.8em;
-	width:6.5em;
-	margin-left:	3.5em;
+	margin-left: 2em;
 }
 
 #front-tittel{
@@ -205,7 +191,8 @@ background-color: darken(@gaveca, 20%);
 	font-size:2em;
 	color: @gaveca;
 	position:relative;
-	top:3.5em;
+	top: 3em;
+	margin-left: 1em;
 }
 
 #front #bestill.btn{
@@ -233,8 +220,8 @@ background-color: darken(@gaveca, 20%);
 }
 
 #notfound a{
-	text-decoration: underline;
-	color:#666;
+	text-decoration: underline !important;
+	color:#666 !important;
 }
 
 /*******/
@@ -243,7 +230,7 @@ background-color: darken(@gaveca, 20%);
 /* Bøker */
 
 #boker h2{
-	font-size: @tittel;
+	font-size: @tittelMobile;
 }
 
 #boker{
@@ -256,19 +243,65 @@ background-color: darken(@gaveca, 20%);
 }
 
 #boker .publikasjoner{
-	
-	padding-bottom: 2em;
+	padding-bottom: 3em;
 	position: relative;
-	height:248px;
-	left:0%;
+	/*height:300px;*/
+}
+
+#boker .publikasjoner.normal{
+	height: 300px;
+}
+
+#boker .publikasjoner.wide{
+	height: 200px;
 }
 
 #boker .publikasjoner img{
 	bottom:0;
 	position:absolute;
 	margin-bottom: 2em;
+	margin-left:-1.4em;
+	width: 163px !important;
 }
 
+#boker .mix{
+	display: none;
+}
+
+#boker .buttons{
+	display:none;
+}
+
+#boker .container ul .publikasjoner{
+	float:none;
+	list-style:none;
+	width:166px;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 3.5em;
+}
+
+#boker .bookTitle{
+	position: absolute;
+	left: -4%;
+	width:166px;
+	text-align:center;
+	color: #666 !important;
+	font-size: 0.9em;
+	font-weight: 300;
+	letter-spacing: 0.5px;
+	vertical-align:top;
+	display:inline-block;
+}
+
+#boker .normal .bookTitle{
+	top: 280px;
+}
+
+#boker .wide .bookTitle{
+	top: 190px;
+}
 
 /*********/
 
@@ -286,6 +319,7 @@ background-color: darken(@gaveca, 20%);
 
 #mentor h2{
 	display:none;
+	font-size:@tittelMobile;
 }
 
 /**********/
@@ -298,11 +332,20 @@ background-color: darken(@gaveca, 20%);
 }
 
 #forfattere h2{
-	font-size: @tittel;
+	font-size: @tittelMobile;
 }
 
 .forfatterMagen{
 	background-color: @gaveca;
+}
+
+
+.colAuthor{
+	text-align: center;
+  	margin-bottom: 5em;
+ 	 width: 250px;
+  	margin: 0 auto;
+  	padding-bottom: 3em;
 }
 
 .colAuthor h4{
@@ -311,13 +354,11 @@ background-color: darken(@gaveca, 20%);
 	line-height: 1.5em;
 	font-weight: 400;
 	letter-spacing: 1px;
-	width: 166px;
 	text-align: center;
 }
 
 .colAuthor p{
 	font-size: 0.8em;
-	width: 166px;
 	text-align: center;
 	letter-spacing: 0.5px;
 	line-height: 1.5em;
@@ -325,7 +366,6 @@ background-color: darken(@gaveca, 20%);
 
 .colAuthor .btn-sm{
 	position: relative;
-	margin-left: 20%;
 	letter-spacing:1px;
 	font-weight:300;
 }
@@ -334,8 +374,6 @@ background-color: darken(@gaveca, 20%);
 	text-decoration: none;
 	color: #fff !important;
 }
-
-
 
 /*********/
 
@@ -350,7 +388,7 @@ background-color: darken(@gaveca, 20%);
 }
 
 #gar-du-med-en-forfatter-i-magen h2{
-	font-size:@tittel;
+	font-size:@tittelMobile;
 }
 
 #gar-du-med-en-forfatter-i-magen a{
@@ -371,22 +409,20 @@ background-color: darken(@gaveca, 20%);
 }
 
 #bestille-boker h2{
-	font-size: @tittel;
+	font-size: @tittelMobile;
 }
 
 #bestille-boker .txtBestill{
-	line-height: 2.5em;
-	font-size: 1em;
+	line-height: 2em;
 	font-weight: 300;
 	letter-spacing: 1px;
-	padding-right: 4em;
 }
 
 #bestille-boker input, textarea{
-	width: 400px;
 	font-size:0.8em;
 	letter-spacing: 0.5px;
 	margin: 0.25em 0;
+	color:#333;
 }
 
 #bestille-boker input:not([type=submit]){
@@ -395,29 +431,26 @@ background-color: darken(@gaveca, 20%);
 
 
 #bestille-boker input[name=your-postnr] { 
-    width: 120px;
 	margin-bottom:0.7em;
 	margin-right:0.5em;
 }
 
-#bestille-boker input[name=your-poststed] { 
-    width: 270px;
-}
-
-
 #bestille-boker input[type=submit]{
-	background: none;
 	border: none;
-	width: 60px;
 	letter-spacing:1px;
+	color:#efefef;
+	background-color:@gaveca;
 }
 
 #bestille-boker .btn{
 	position: relative;
-	left: 320px;
+	left: 0px;
 	font-size:1.1em;
 }
 
+#bestille-boker .bestille-boker-content{
+	padding-left:1em;
+}
 
 /*********/
 
@@ -428,36 +461,35 @@ background-color: darken(@gaveca, 20%);
 }
 
 #kontakt h2{
-	font-size: @tittel;
+	font-size: @tittelMobile;
 }
 
 .google-maps .overlay {
    background:transparent; 
    position:relative; 
    width:100%;
-   height:300px; /* your iframe height */
-   top:300px;  /* your iframe height */
-   margin-top:-300px;  /* your iframe height */
+   height:300px; 
+   top:300px;  
+   margin-top:-300px;  
 }
 
 .google-maps iframe{
 	margin-left: 0px;
-width: 100%;
-border-top: solid thick #525252 !important;
-border-bottom: solid thick #525252 !important;
-margin-right: 0px;
-margin-bottom: -0.5em;
+	width: 100%;
+	border-top: solid thick #525252 !important;
+	border-bottom: solid thick #525252 !important;
+	margin-right: 0px;
+	margin-bottom: -0.5em;
 }
-
-
 
 #kontakt h3{
 	text-transform: uppercase;
 	letter-spacing:1.5px;
+	font-size:1.1em;
 }
 
 #kontakt a{
-	color: #666;
+	color: #666 !important;
 }
 
 #kontakt p.pgaveca{
@@ -466,11 +498,16 @@ margin-bottom: -0.5em;
 
 #kontakt .ansatte .vc_col-sm-6 h4{
 	margin-bottom: 0.3em;
+	font-size:1em;
 }
 
 #kontakt .jT{
 	font-weight:200;
 	letter-spacing:1px;
+}
+
+#kontakt .kontakt{
+	margin-left:10%;
 }
 
 /********/
@@ -484,33 +521,33 @@ footer{
 	color: darken(white,3%);
 }
 
-	footer a{
-		color: darken(white,3%);
-		line-height:2em;
-	}
+footer a{
+	color: darken(white,3%);
+	line-height:2em;
+}
+
+footer h4 {
+	margin-bottom:1em;
+	line-height:2em;
+	border-bottom: solid 1px darken(white,10%);
+	font-size:1em;
+}
 	
-	footer h4 {
-		margin-bottom:1em;
-		line-height:2em;
-		border-bottom: solid 1px darken(white,10%);
-		font-size:1em;
-	}
-	
-	/*  Kolonner i Footer  */
-	.footerCol{
-		list-style: none;
-		font-size:0.8em;
-		text-transform:uppercase;
-	}
-	
-	ul.footerCol{
-		margin-left: -3.45em;
-	}
-	
-	/*  Facebook  */
-	.fb_iframe_widget {
-		background-color: #fff;
-	}
+/*  Kolonner i Footer  */
+.footerCol{
+	list-style: none;
+	font-size:0.8em;
+	text-transform:uppercase;
+}
+
+ul.footerCol{
+	margin-left: -3.45em;
+}
+
+/*  Facebook  */
+.fb_iframe_widget {
+	background-color: #fff !important;
+}
 
 #bottomBar{
 	background-color:rgba(0,0,0,0.7);
@@ -521,8 +558,6 @@ footer{
 	font-size:0.8em;
 	
 } 
-
-
 
 /*	Forfatter & Bok - Single */
 
@@ -535,7 +570,6 @@ footer{
 .contentInfo{
 	margin-bottom:2em;
 }
-
 
 .contentDesc{
 	font-size: 1.3em;
@@ -566,7 +600,6 @@ footer{
 
 #theContent .btn-danger{
 	width: 100%;
-	height: 3.5em;
 }
 
 #theContent .attachment-post-thumbnail{
@@ -607,17 +640,22 @@ footer{
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) { 
 
+/* Common */
+.pages{
+	font-size:1.3em;
+}
+
 /* Bestselger */
 
 #front .container{
 	background-image: url(../images/front.jpg);
 	-webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-  margin-left:auto;
-  height:400px;
-  padding-bottom:0;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
+	margin-left:auto;
+	height:400px;
+	padding-bottom:0;
 }
 
 #front #bestill.btn{
@@ -628,7 +666,6 @@ footer{
 #front-bestselger{
 	font-size:2.3em;
 	top:2.5em;
-	margin-left:	3.9em;
 }
 
 #front-tittel{
@@ -640,39 +677,34 @@ footer{
 
 #front-forfatter{
 	font-size:2.5em;
-	top:2.5em;
-	margin-left:1em;
 }
 
 /*************/
 
 
 /*     Nav    */
-#backMenu{
-	width: 100%;
-	background-color: rgba(0,0,0,0.8);
-	padding-bottom: 1em;
-	position: fixed;
-	z-index: 9999;
-}
 
 .nav-pills > li {
-display: inline-block;
-font-size:0.65em;
+	display: inline-block;
+	font-size:0.65em;
+}
+
+.nav>li>a:focus{
+	background-color: rgba(255,255,255,0);
 }
 
 .nav-pills > li a{
 	border-radius: 0;
--webkit-border-radius:0;
--moz-border-radius:0;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
 }
 
 .nav-pills > li:not(.active) a{
-border-bottom: solid 0.1em rgba(255,255,255,0.00);
--webkit-transition: border-bottom-color 0.5s; 
--moz-transition: border-bottom 0.5s;
--o-transition:border-bottom 0.5s;
-transition: border-bottom 0.5s;
+	border-bottom: solid 0.1em rgba(255,255,255,0.00);
+	-webkit-transition: border-bottom-color 0.5s; 
+	-moz-transition: border-bottom 0.5s;
+	-o-transition:border-bottom 0.5s;
+	transition: border-bottom 0.5s;
 }
 
 .nav.nav-pills{
@@ -680,32 +712,97 @@ transition: border-bottom 0.5s;
 }
 
 .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus, .nav-pills>li a:hover {
-background-color: transparent;
-border-bottom:solid thin #fff;
+	background-color: transparent;
+	border-bottom:solid thin #fff;
 }
 
 .nav-pills > li.active a{
-background-color: transparent;
-border-bottom:solid thin #fff;
+	background-color: transparent;
+	border-bottom:solid thin #fff;
 }
 
-
-.menu-row {
-	position: fixed;
+.menu-row{
+	padding: .5em 0;
 }
-
-#logo{
-	position: fixed;
-}
-
 /***************/
 
+/* Bøker */
 
-/* Bestille Bøker */
+#boker .publikasjoner .mix-target{
+	display: inline-block;
+	width: 163px;
+}
+
+#boker .container ul .publikasjoner{
+	width:218px;
+	text-align:left;
+}
+
+#boker h2{
+	font-size:@tittel;
+}
+
+#boker .wide{
+	height: 300px;
+}
+
+#boker .wide .bookTitle{
+	top: 180px;
+}
+
+/*********/
+
+#mentor h2{
+	font-size:@tittel;
+}
+
+#forfattere h2{
+	font-size:@tittel;
+}
 
 
+/*	Forfattere	*/
+.colAuthor{
+ 	width: 25%;
+}
 
-/******************/
+/*	Bestille Bøker	*/
+#bestille-boker h2{
+	font-size:@tittel;
+}
+
+#bestille-boker .txtBestill{
+	line-height: 2.5em;
+	font-size: 1em;
+	font-weight: 300;
+	letter-spacing: 1px;
+	padding-right: 4em;
+}
+/*******************/
+
+#gar-du-med-en-forfatter-i-magen h2{
+	font-size:@tittel;
+}
+
+/* Kontakt */
+
+#kontakt .kontakt{
+	margin-left:0;
+}
+
+#kontakt h2{
+	font-size:@tittel;
+}
+
+#kontakt h3{
+	font-size:24px;
+}
+
+#kontakt .ansatte .vc_col-sm-6 h4{
+	font-size:18px;
+}
+/***********/
+
 }
 
 
@@ -720,13 +817,11 @@ margin-top:-0.3em;
 letter-spacing:0.5px;
 }
 
-
 /***************/
 
 /* Bestselger */
 #front .container{
   height:500px;
-  
 }
 
 #front #bestill.btn{
@@ -737,7 +832,6 @@ letter-spacing:0.5px;
 #front-bestselger{
 	font-size:2.8em;
 	top:2.5em;
-	margin-left:	3.9em;
 }
 
 #front-tittel{
@@ -749,12 +843,9 @@ letter-spacing:0.5px;
 
 #front-forfatter{
 	font-size:3em;
-	top:2.5em;
-	margin-left:1em;
 }
 
 /*************/
-
 
 /* Kontakt */
 #kontakt .adresser{
@@ -771,9 +862,6 @@ letter-spacing:0.5px;
 /* Bøker */
 #boker {
 	min-height:850px;
-}
-#boker .Container .mix{
-	display:none;
 }
 
 #boker button.filter{
@@ -796,13 +884,20 @@ letter-spacing:0.5px;
 
 #boker .buttons{
 	text-align: center;
-	padding-bottom: 2em;
+	display:block;
+}
+
+#boker button.filter.active{
+	text-decoration:underline;
+}
+
+#boker .container ul li{
+	width:200px;
 }
 
 /* Bok - Single */
 #theContent .btn-danger{
 	width: 106px;
-	height: 34px;
 	margin-top:2em;
 }
 
@@ -821,14 +916,12 @@ letter-spacing:0.5px;
 
 /*     Nav    */
 .nav-pills > li {
-display: inline-block;
-font-size:1em;
-margin-top:-0.3em;
-padding:0 1em;
-
-letter-spacing:1px;
+	display: inline-block;
+	font-size:1em;
+	margin-top:-0.3em;
+	padding:0 1em;
+	letter-spacing:1px;
 }
-
 
 #front .container{
   height:650px;
@@ -843,7 +936,6 @@ letter-spacing:1px;
 #front-bestselger{
 	font-size:3.3em;
 	top:2.5em;
-	margin-left:	3.9em;
 }
 
 #front-tittel{
@@ -855,141 +947,14 @@ letter-spacing:1px;
 
 #front-forfatter{
 	font-size:3.5em;
-	top:2.5em;
-	margin-left:1em;
 }
 
+/* Bøker */
 
-/* Bestselger */
-
-
-
-
-/*************/
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-.menu-row a{
-	color: #fff;
+#boker .container ul li{
+	width:228px;
 }
 
-.nav-pills>li:hover>a {
-	background-color:darken(@gaveca, 20%);
-}
-
-.dropdown-menu{
-	background-color:darken(#ccc, 30%);
-}
-
-.dropdown-menu>li>a{
-	color: darken(white,3%);
-	font-size:0.8em;
-	letter-spacing: 0.05em;
-	font-weight:300;
-	text-transform:uppercase;
-	line-height:2em;
-}
-
-.dropdown-menu>li>a:hover{
-	background-color:lighten(@gaveca, 20%) !important;
-}
-
-.dropdown:hover .sub-menu {
-	/*display:block;
-}
-
-	
-
-
-/****************************/
-
-
-/*
-
-
-#front{
-	width:100%;
-	height:800px;
-	overflow:hidden;
-	margin-bottom:3em;
-}
-
-
-
-
-.hovedinnhold {
-	margin-bottom: 2em;
-}
-
-.products .product{
-	list-style:none;
-	display:inline-block;
-	height:28em;
-	width: 200px;
-}
-
-.products .product a:hover{
-	text-decoration:none;
-}
-
-.products .product a {
-	color:#333;
-}
-
-.products .product a h3 {
-	font-size:1.2em;
-	width: 150px;
-}
-
-.products .product a .amount{
-	font-size:1.8em;
-	width: 150px;
-	color: darken(hsl(352,85%,59%), 20%);
-}
-
-.add_to_cart_button{
-	position:relative;
-	top:2em;
-}
-
-.btn-primary {
-background-color: @gaveca !important;
- border-color: darken(hsl(352,85%,59%), 20%) !important;
-}
-
-.home .btn-primary {
- width:150px;
- letter-spacing: 1px;
- visibility:hidden;
-}
-
-
-.home .products .product:hover .btn-primary{
-	.background-gradient-hover;
-	visibility:visible;
-}
-
-#mailingliste{
-	width:100%;
-	height:auto;
-	padding:1em 0;
-	background-color: @gaveca;
-	text-align:center;
-	font-size:1.2em;
-}
-*/
+/*********/
 
  }

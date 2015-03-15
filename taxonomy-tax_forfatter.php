@@ -1,4 +1,4 @@
-<?php include('header3.php'); ?>
+<?php include('header2.php'); ?>
 <div class="container-fluid" id="theContent">
 	<div class="container">
     	<div class="row contentInfo">
@@ -26,14 +26,8 @@
 		 print $authorImg;
 		 print '</div>';
 		 print '<div class="col-xs-12 col-md-8">';
-		 print '<div class="contentDesc">'.$authorDesc.'<hr></div>';
-		 print '</div>';
-		?>
-        </div>
-        <h3>Publikasjoner av <?php print $authorName; ?></h3>
-        <div class="row authorBooks">
-        	
-            <?php
+		 print '<div class="contentDesc">'.$authorDesc.'<hr><div class="row moreBooks">'; ?>
+		 <?php
 			global $post;
 			$i = 0;
 		
@@ -46,8 +40,8 @@
 			foreach(get_the_terms($wp_query->post->ID, 'tax_forfatter') as $term)
          		$AuthorSlug = $term->slug; 
 				if($AuthorSlug  == $authorSlug){
-				if($i < 4){$i++;} else{print '</div><div class="row authorBooks">'; $i = 1;}
-				print '<div class="col-xs-12 col-md-3">';	
+				if($i < 4){$i++;} else{print '</div><div class="row moreBooks">'; $i = 1;}
+				print '<div class="col-xs-12 col-md-3 moreBook">';	
 				print '<a href="'. get_permalink().'">';
 			 	the_post_thumbnail( 'bok', array( 'class' => 'post-'.$post->ID.' img-responsive') );
 				print '</a>';
@@ -56,6 +50,9 @@
 			?>
 			
 			<?php endwhile; wp_reset_postdata(); ?>
+		 <?php print '</div>';
+		 print '</div></div>';
+		?>
         </div>
     </div>
 </div>

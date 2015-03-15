@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo wp_title(). ' | ' .get_bloginfo('name'); ?></title>
 	<link href="<?php echo get_stylesheet_uri(); ?>" type="text/css" rel="stylesheet">
+    <?php do_action('wp_head'); ?>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery-1.11.2.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/assets/js/modernizr.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.mixitup.js"></script>
-    <link rel="icon" type="image/ico" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico"/>
+    <link rel="icon" type="image/ico" href="<?php echo get_template_directory_uri(); ?>/assets/images/favicon.ico"/>
 </head>
 <body  <?php if(is_front_page()){echo 'class="home"';}  ?>>
 <!-- Facebook -->
@@ -22,3 +22,4 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=319418674890445&version=v2.0";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<?php include('menu-second.php'); ?>

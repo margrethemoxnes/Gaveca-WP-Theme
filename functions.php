@@ -59,7 +59,7 @@ add_action( 'init', 'register_my_menu' );
 /* Cropping and resize images */
  add_theme_support( 'post-thumbnails', array( 'post', 'product') );
 add_image_size( 'bok', 163, 999, false ); 
-add_image_size( 'forfatter', 390, 510, true ); 
+add_image_size( 'forfatter', 390, 510, false ); 
 add_image_size( 'pris', 195, 195, true ); 
 add_image_size( 'pubSmall', 134, 999, false ); 
 add_image_size( 'pubBig', 300, 999, false ); 
@@ -120,6 +120,63 @@ new MultiPostThumbnails(array(
 
  }
 
+// Dersom bok er utsolgt
+/*
+add_action( 'admin_init', 'g_utsolgt_create' );
+ 
+function g_utsolgt_create() {
+    add_meta_box('g_utsolgt_meta', 'Utsolgt (Under utvikling)', 'g_utsolgt_meta', 'publikasjoner');
+}
+ 
+function g_utsolgt_meta () {
+ 
+// - grab data -
+ 
+	global $post;
+	$values = get_post_custom($post->ID);
+	$utsolgtDato = isset( $values['lagerDato'] ) ? $values['lagerDato'] : '';
+	$check = isset( $values['utsolgt'] ) ? esc_attr( $values['utsolgt'] ) : '';
+    
+    // - security -
+ 
+	echo '<input type="hidden" name="g-utsolgt-nonce" id="g-utsolgt-nonce" value="' .wp_create_nonce( 'g-utsolgt-nonce' ) . '" />'; ?>
+    
+	<p><label>Utsolgt: </label> <input type="checkbox" name="utsolgt" <?php checked( $check, 'on' ); ?>  /></p>
+    <p><label>På lager f.o.m.</label> <input type="text" name="lagerDato" placeholder="Måned, År" value="<?php echo $utsolgtDato; ?>"  /></p>
+<?php
+}
+
+// Save Utsolgt Metadata
+ 
+add_action ('save_post', 'save_g_utsolgt');
+ 
+function save_g_utsolgt(){
+ 
+	global $post;
+	 
+	// - still require nonce
+	 
+	if ( !wp_verify_nonce( $_POST['g-utsolgt-nonce'], 'g-utsolgt-nonce' )) {
+		return $post->ID;
+	}
+	 
+	if ( !current_user_can( 'edit_post', $post->ID ))
+		return $post->ID;
+	 
+	// - convert back to unix & update post
+	 
+	if(!isset($_POST['utsolgt'])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, 'utsolgt', $check );
+	 
+	if(!isset($_POST['lagerDato'])):
+	return $post;
+	endif;
+	update_post_meta($post->ID, 'lagerDato', $utsolgtDato );
+	 
+}
+*/
 function create_forfattere_taxonomy() {
  
 $forfatter_labels = array(
@@ -287,17 +344,17 @@ add_action( 'init', 'create_forfattere_taxonomy', 0 );
 
 // Shortcode for bøker
 add_shortcode('publikasjoner','g_publikasjon_loop');
-//, 'tax_query' => array(array('taxonomy' => 'tax_forfatter'))
 function g_publikasjon_loop(){ ?>
+
 	<div class="row buttons">
 		<?php 
-		$MixNumb = 1;
+		
 		$AuthorArray = array(
 			'hide_empty' => true,
 		);
 		$authors = get_terms( 'tax_forfatter', $AuthorArray );
  if ( ! empty( $authors ) && ! is_wp_error( $authors ) ){
-     echo '<button class="filter" data-filter="all">Alle forfattere</button>'; $MixNumb++;
+     echo '<button class="filter" data-filter="all">Alle forfattere</button>';
      foreach ( $authors as $author ) {
        echo '<button class="filter forfattere '.$author->slug.'" data-filter=".'.$author->slug.'">'.$author->name.'</button>';
         
@@ -306,34 +363,32 @@ function g_publikasjon_loop(){ ?>
  }
 	?>
     </div>  <!--End Author Tax Row -->
-    <div class="Container">
-	<div class="row">
-		<?php 
-		global $post;
-		$i = 0;
-		
-        $args = array(
-            'post_type' => 'publikasjoner',
-            'posts_per_page' => '16',
-        );
-        $wp_query = new WP_Query( $args );
-        while ($wp_query->have_posts() ) : $wp_query -> the_post();
-        if($i < 4){$i++;} else{print '</div><div class="row">'; $i = 1;} ?>
-        <div class="col-xs-12 col-md-3 publikasjoner n<?php echo $i; ?>">
-    	<?php foreach(get_the_terms($wp_query->post->ID, 'tax_forfatter') as $term)
-         $AuthorSlug = $term->slug; 
-         print '<a href="'. get_permalink().'">';
-		 the_post_thumbnail( 'bok', array( 'class' => 'post-'.$post->ID.' '.$AuthorSlug.' mix', 'data-my-order' => $MixNumb) ); 
-		 print '</a>';
-		 $MixNumb++; 
-		?>
-        </div>
-        <?php endwhile; wp_reset_postdata(); ?>
-    </div> <!-- End Row --> 
-    
+
+    <div class="container booksMix">
+		<ul>
+                <?php 
+                global $post;
+                $i = 0;
+                $MixNumb = 1;
+                $args = array(
+                    'post_type' => 'publikasjoner',
+                    'posts_per_page' => '16',
+                );
+                $wp_query = new WP_Query( $args );
+                while ($wp_query->have_posts() ) : $wp_query -> the_post();
+                
+					foreach(get_the_terms($wp_query->post->ID, 'tax_forfatter') as $term)
+						
+						 $AuthorSlug = $term->slug; 
+						 print '<li class="'.$AuthorSlug.' publikasjoner mix" data-myorder="'.$MixNumb.'">';
+						 print '<a href="'. get_permalink().'">';
+						 the_post_thumbnail( 'bok', array( 'class' => 'post-'.$post->ID) ); 
+						 echo '</a><a class="bookTitle" href="'. get_permalink().'">'.get_the_title().'</a></li>';
+						 $MixNumb++; 
+					?>
+                <?php endwhile; wp_reset_postdata(); ?>
+    	</ul> <!-- End Row --> 
     </div> <!-- End Container --> 
-    
-    
 <?php }
 
 // Shortcode for Forfattere
@@ -344,7 +399,7 @@ function g_forfatter_loop(){
 		global $post;
 		$i = 0;
 		$terms = apply_filters( 'taxonomy-images-get-terms', '', array(
-    			'image_size'   => 'box',
+    			'image_size'   => 'bok',
 				'taxonomy' => 'tax_forfatter',) );
 if ( ! empty( $terms ) ) {
     print '<div class="row rowAuthors">';
@@ -359,12 +414,12 @@ if ( ! empty( $terms ) ) {
 					$i = 1;
 					print '</div><div class="row rowAuthors">';
 				}
-				print '<div class="col-xs-12 col-md-3 colAuthor" data-value="'.$i.'">
+				print '<div class="col-md-3 colAuthor" data-value="'.$i.'">
 				<a href="' . esc_url( get_term_link( $term, $taxID ) ) . '">' 
 				. wp_get_attachment_image( $term->image_id, 'bok') . '</a>'; 
 				print '<h4>'.$term->name.'</h4>';
 				print '<p>'. $term_meta['custom_term_meta'].'</p>';
-				print '<button class="btn btn-danger btn-sm"><a href="' . esc_url( get_term_link( $term, $taxID ) ) . '">Les mer <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></button>';
+				print '<a href="' . esc_url( get_term_link( $term, $taxID ) ) . '" class="btn btn-danger btn-sm">Les mer <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>';
 				print '</div>';
     	}
 	print '</div>';
