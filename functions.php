@@ -116,33 +116,33 @@ if (class_exists('MultiPostThumbnails')) {
 }
 
 function create_forfattere_taxonomy() {
-
-$forfatter_labels = array(
-'name' => _x( 'Forfattere', 'taxonomy general name' ),
-'singular_name' => _x( 'Forfatter', 'taxonomy singular name' ),
-'search_items' =>  __( 'Søk etter forfatter' ),
-'popular_items' => __( 'Populære forfattere' ),
-'all_items' => __( 'Alle forfattere' ),
-'parent_item' => null,
-'parent_item_colon' => null,
-'edit_item' => __( 'Rediger forfatter' ),
-'update_item' => __( 'Oppdater forfatter' ),
-'add_new_item' => __( 'Legg til forfatter' ),
-'new_item_name' => __( 'Nytt forfatternavn' ),
-'separate_items_with_commas' => __( 'Separer forfattere med komma' ),
-'add_or_remove_items' => __( 'Legg til eller fjern forfattere' ),
-'choose_from_most_used' => __( 'Velg av mest valgte forfattere' ),
-);
-
-
-register_taxonomy('tax_forfatter','publikasjoner', array(
-'label' => __('Forfattere'),
-'labels' => $forfatter_labels,
-'hierarchical' => true,
-'show_ui' => true,
-'query_var' => true,
-'rewrite' => array( 'slug' => 'forfatter' )
-));
+	
+	$forfatter_labels = array(
+		'name' => _x( 'Forfattere', 'taxonomy general name' ),
+		'singular_name' => _x( 'Forfatter', 'taxonomy singular name' ),
+		'search_items' =>  __( 'Søk etter forfatter' ),
+		'popular_items' => __( 'Populære forfattere' ),
+		'all_items' => __( 'Alle forfattere' ),
+		'parent_item' => null,
+		'parent_item_colon' => null,
+		'edit_item' => __( 'Rediger forfatter' ),
+		'update_item' => __( 'Oppdater forfatter' ),
+		'add_new_item' => __( 'Legg til forfatter' ),
+		'new_item_name' => __( 'Nytt forfatternavn' ),
+		'separate_items_with_commas' => __( 'Separer forfattere med komma' ),
+		'add_or_remove_items' => __( 'Legg til eller fjern forfattere' ),
+		'choose_from_most_used' => __( 'Velg av mest valgte forfattere' ),
+	);
+	
+	
+	register_taxonomy('tax_forfatter','publikasjoner', array(
+		'label' => __('Forfattere'),
+		'labels' => $forfatter_labels,
+		'hierarchical' => true,
+		'show_ui' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'forfatter' )
+	));
 }
 
 add_action( 'init', 'create_forfattere_taxonomy', 0 );
