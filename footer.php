@@ -18,9 +18,7 @@
 							);
 							$pub = new WP_Query( $args );
 							while ($pub->have_posts() ) : $pub -> the_post(); ?>
-							
-							<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-							
+								<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 							<?php endwhile; wp_reset_postdata(); ?>
                         </ul>
                     </div>
