@@ -1,8 +1,10 @@
 # Gaveca-WP-Theme
-WordPress theme for Forlag Gaveca.
+<p>WordPress theme for Forlag Gaveca.<p>
 
 Plugins needed for this theme:
-Visual Composer: http://vc.wpbakery.com/
-Contact Form 7: https://wordpress.org/plugins/contact-form-7/
-Multiple Post Thumbnails: https://wordpress.org/plugins/multiple-post-thumbnails/
-Taxonomy Images: https://wordpress.org/plugins/taxonomy-images/
+<ul>
+<li>Visual Composer: http://vc.wpbakery.com/</li>
+<li>Contact Form 7: https://wordpress.org/plugins/contact-form-7/</li>
+<li>Multiple Post Thumbnails: https://wordpress.org/plugins/multiple-post-thumbnails/</li>
+<li>Taxonomy Images: https://wordpress.org/plugins/taxonomy-images/</li>
+</ul>
