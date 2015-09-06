@@ -59,6 +59,7 @@ add_image_size( 'forfatter', 390, 510, false );
 add_image_size( 'pris', 195, 195, true ); 
 add_image_size( 'pubSmall', 134, 999, false ); 
 add_image_size( 'pubBig', 300, 999, false ); 
+add_image_size( 'sisteNytt', 1200, 500, true ); 
 
 update_option('thumbnail_size_w', 103);
 update_option('thumbnail_size_h', 999);
